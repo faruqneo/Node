@@ -1,0 +1,17 @@
+{
+  "name": "nodekb",
+  "version": "1.0.0",
+  "description": "simple knowledgbae app\u001b[D\u001b[D\u001b[D\u001b[D\u001b[Dse \u001b[C\u001b[C\u001b[D\u001b[Dapp",
+  "main": "crud.js",
+  "scripts": {
+    "start": "node app"
+  },
+  "author": "faruq khan",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.5",
+    "pug": "^2.0.3"
+  }
+}
