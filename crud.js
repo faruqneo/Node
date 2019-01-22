@@ -34,5 +34,5 @@ app.get('/',function(req, res){
 
 
 app.listen(3000, function(){
-	console.log('server is running');
+	console.log('json url is working fine.');
 });
