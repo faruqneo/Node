@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
-const request = require('request');
+const parseJson = require('parse-json');
+const str2json = require('string-to-json');
 
 //Init App
 const app = express();
@@ -10,32 +11,26 @@ const app = express();
 app.set('views',path.join(__dirname,'views'));
 app.set('view engine','pug');
 
-const url = "https://fcc-weather-api.glitch.me/api/current?lat=20.360451&lon=85.8246128";
+
 
 app.get('/',function(req, res){
-	request({
-		url: url,
-		json: true
-	},function(err, resp, body){
-		    if (!err && resp.statusCode === 200) {
-	        /*console.log(body.main.temp)*/ 
-	        res.render('data',{
-				temp: body.main.temp,
-				humidity: body.main.humidity,
-				pressure: body.main.pressure,
-				cityname: body.name
-			});
-	    }else
-	    {
-	    	console.log(err);
-	    }
-
-	});
-	
+let data = [
+{
+	"name": "faruq",
+	"branch": "cse"
+},{
+	"name": "prakash",
+	"branch": "eee"
+},{
+	"name": "raman",
+	"branch": "mca"
+}];
+	/*console.log(parseJson(JSON.stringify(data)));*/
+	res.send(JSON.stringify(data));
 });
 
 
 
 app.listen(3000, function(){
-	console.log('json url is working fine.');
+	console.log('server is running');
 });

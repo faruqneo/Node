@@ -12,7 +12,9 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "mongoose": "^5.4.5",
+    "parse-json": "^4.0.0",
     "pug": "^2.0.3",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "string-to-json": "^0.1.0"
   }
 }
