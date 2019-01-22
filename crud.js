@@ -16,8 +16,8 @@ app.get('/',function(req, res){
 	request({
 		url: url,
 		json: true
-	},function(err, res, body){
-		    if (!err && res.statusCode === 200) {
+	},function(err, resp, body){
+		    if (!err && resp.statusCode === 200) {
 	        /*console.log(body.main.temp)*/ 
 	        res.render('data',{
 				temp: body.main.temp,
