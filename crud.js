@@ -1,12 +1,14 @@
 const express = require('express');
 const path = require('path');
 const request = require('request');
+/*const hbs = require('handlebars')*/
 
 //Init App
 const app = express();
 
 
 //Load View Engine
+/*app.engine('hbs',hbs({extname: 'hbs', defaultLayout: 'layout', layoutsDir: __dirname + '/views'}));*/
 app.set('views',path.join(__dirname,'views'));
 app.set('view engine','pug');
 
@@ -19,12 +21,10 @@ app.get('/',function(req, res){
 	},function(err, resp, body){
 		    if (!err && resp.statusCode === 200) {
 	        /*console.log(body.main.temp)*/ 
-	        res.render('data',{
-				temp: body.main.temp,
-				humidity: body.main.humidity,
-				pressure: body.main.pressure,
-				cityname: body.name
-			});
+	  //       res.render('data',{
+			// 	value: JSON.stringify(body)
+			// });
+			res.send(JSON.stringify(body));
 	    }else
 	    {
 	    	console.log(err);
@@ -37,5 +37,5 @@ app.get('/',function(req, res){
 
 
 app.listen(3000, function(){
-	console.log('json url is working fine.');
+	console.log('Server is running.');
 });
