@@ -2,7 +2,7 @@
   "name": "nodekb",
   "version": "1.0.0",
   "description": "simple knowledgbae app\u001b[D\u001b[D\u001b[D\u001b[D\u001b[Dse \u001b[C\u001b[C\u001b[D\u001b[Dapp",
-  "main": "crud.js",
+  "main": "main.js",
   "scripts": {
     "start": "node app"
   },
