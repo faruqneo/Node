@@ -25,6 +25,9 @@ app.get('/',function(req, res){
 				pressure: body.main.pressure,
 				cityname: body.name
 			});
+	    }else
+	    {
+	    	console.log(err);
 	    }
 
 	});
