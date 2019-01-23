@@ -1,7 +1,6 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
 
 //Init app
 const app = express();
@@ -28,11 +27,7 @@ let Dummy = require('./model/dummy');
 app.set('views',path.join(__dirname,'view'));
 app.set('view engine','pug');
 
-//Body paser middleware
-app.use(bodyParser.urlencoded({extended:false}));
 
-//parser application json
-app.use(express.static(path.join(__dirname,'public')));
 
 app.get('/',function(req, res){
     Dummy.find({},function(err, dummy){
@@ -42,10 +37,10 @@ app.get('/',function(req, res){
 		}
 		else
 		{
-			// res.render('table',{
-			// 	dummy: dummy
-            // });		
-            res.send(dummy);	
+			res.render('table',{
+				dummy: dummy
+            });		
+            // res.send(dummy);	
 		}
     });
 });

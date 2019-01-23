@@ -2,6 +2,24 @@ doctype thml
 html
     head
         title dummy data
+        script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js")
+        script(src="asset/paging.js")
     body
-        ul
-            li #{dummy}
+        table(border=5)
+            tr
+                th id
+                th first_name
+                th last_name
+                th email
+                th gender
+                th ip_address
+                each val in dummy
+                    tr
+                     td= val.id
+                     td= val.first_name
+                     td= val.last_name
+                     td= val.email
+                     td= val.gender
+                     td= val.ip_address
+    
+            
