@@ -34,11 +34,10 @@ let Dummy = require('./model/dummy');
 app.set('views',path.join(__dirname,'views'));
 app.set('view engine','pug');
 
-let dumlen = 0;
-let count = 0;
+
 
 app.post('/getdata',function(req, res){
-console.log(req.body.offset);
+
     Dummy.find({},function(err, dummy){
 		if(err)
 		{
@@ -47,9 +46,8 @@ console.log(req.body.offset);
 		else
 		{
 			res.send(dummy);		
-			dumlen = dummy.length;
 		}
-    }).sort({id: 1}).limit(10).skip(count);
+    }).sort({id: 1});
 });
 
 app.get('/getdata',function(req, res){
@@ -58,10 +56,7 @@ app.get('/getdata',function(req, res){
 
 
 app.get('/',function(req, res){
-	res.render('table',{
-		dummy: dumlen,
-		offset: count
-	});		
+	res.render('table');		
 	// res.send(dummy);	
 });
 

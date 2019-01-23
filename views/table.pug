@@ -2,21 +2,14 @@ doctype thml
 html
     head
         title dummy data
-        script(type="text/javascript"  ,src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
+        link(rel="stylesheet" ,type="text/css" ,href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css")
+        script(type="text/javascript" ,src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
+        script(type="text/javascript" ,charset="utf8" ,src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js")
         
     body
         table#table_id
-            tr
-                th id
-                th first_name
-                th last_name
-                th email
-                th gender
-                th ip_address
-    h1  Showing #{offset+1}-#{offset+10} of  #{dummy/10+1}
-    
-
-
+            thead
+            tbody
         
 
     script.
@@ -24,12 +17,22 @@ html
         $.ajax({
         type: 'POST', 
         url: "/getdata", 
+        contentType: 'application/json; charset=utf-8',
         dataType: 'json',
-        data: #{offset},
+
         success: function(response){  
+        //- console.log(response);
+        $('thead').html("<tr>"
+        +"<td>id</td>"
+        +"<td>first_name</td>"
+        +"<td>last_name</td>"
+        +"<td>email</td>"
+        +"<td>gender</td>"
+        +"<td>ip_address</td>"
+        +"</tr>");
+
         $.each(response, function(index, value){
-        //- console.log( value.first_name + " is " + index );
-        $('#table_id').append("<tr>"
+        $('tbody').append("<tr>"
         +"<td>"+value.id+"</td>"
         +"<td>"+value.first_name+"</td>"
         +"<td>"+value.last_name+"</td>"
@@ -38,12 +41,18 @@ html
         +"<td>"+value.ip_address+"</td>"
         +"</tr>");
         });
+
+        $('#table_id').DataTable();
         },
         error: function(xhr) {
         alert('un success');  
         }
         });        
-        } );
+        });
+
+
+
+        
 
     
             
